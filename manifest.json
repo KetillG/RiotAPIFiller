@@ -1,21 +1,25 @@
 {
   "manifest_version": 2,
-  "name": "Reddit minimize",
-  "version": "0.7",
+  "name": "RiotAPIFiller",
+  "version": "1",
   "permissions": [
-    "storage"
+    "storage",
+    "webRequest",
+    "tabs"
   ],
   "browser_action": {
     "default_icon": "icon.png"
+  },
+  "background": {
+    "scripts": [ "background.js" ]
   },
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
   "content_scripts": [
     {
       "matches": [
-        "*://www.reddit.com/r/*/comments/*",
-        "*://np.reddit.com/r/*/comments/*"
+        "*://*.api.riotgames.com/*api_key="
       ],
-      "js": ["jquery.js", "colors.js"]
+      "js": ["getKey.js"]
     }
   ],
   "options_page": "options.html"
